@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'typewriter_condensed';
+    src: url('typewriter_condensed/typewcond_bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #121212;
+    color: #fff;
+  }
+  
+  /* ================= Header ================= */
+ 
+  
+
+  
+  /* ================= Sidebar ================= */
+  .sidebar {
+    width: 260px;
+    background-color: #1e0e1e;
+    color: white;
+    position: fixed;
+    top: 60px;
+    left: -260px;
+    height: 100%;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    padding: 1rem;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+  
+  .sidebar h2 {
+    font-size: 1rem;
+    margin: 1.5rem 0 0.5rem;
+    border-bottom: 1px solid #4a2c4f;
+    padding-bottom: 4px;
+    color: #ff91c6;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar li {
+    padding: 6px 0;
+  }
+  
+  .sidebar a {
+    color: #f5c1dc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .sidebar a:hover {
+    color: #ff69b4;
+  }
+  
+  .search-bar {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    background-color: #2f1a2f;
+    color: white;
+  }
+  
+  .search-bar button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #802c6e;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* ================= Main ================= */
+  main {
+    margin-top: 60px;
+    padding: 2rem;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+    margin-left: 0;
+  }
+  
+  .sidebar.active ~ main {
+    margin-left: 260px;
+  }
+  
+  /* ================= Anime Detalhes ================= */
+  .anime-details {
+    margin-left: 260px;
+    padding: 20px;
+    background-color: #121212;
+    color: #fce4f6;
+    min-height: 100vh;
+  }
+  
+  .anime-header {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #4d2d4d;
+    padding-bottom: 20px;
+  }
+  
+  .anime-header img {
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+  }
+  
+  .anime-info h2 {
+    font-size: 2rem;
+    color: #ff91c6;
+    margin-top: 0;
+  }
+  
+  .anime-info h3 {
+    font-weight: normal;
+    color: #d18bbd;
+    margin-bottom: 10px;
+  }
+  
+  .anime-info ul,
+  .anime-info p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #ffd0ec;
+  }
+  
+  .anime-description,
+  .anime-background {
+    margin-top: 20px;
+  }
+  
+  .anime-description h3,
+  .anime-background h3 {
+    font-size: 1.3rem;
+    color: #ff91c6;
+    border-bottom: 2px solid #ff69b4;
+    padding-bottom: 5px;
+    display: inline-block;
+  }
+  
+  .anime-description p,
+  .anime-background p {
+    margin-top: 10px;
+    line-height: 1.8;
+    font-size: 1rem;
+    color: #fdd6ea;
+  }
+  
+  /* ================= Login Button ================= */
+  .login-btn {
+    margin-left: auto;
+    padding: 8px 16px;
+    background-color: #ff4d94;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #ff1a75;
+    transform: scale(1.05);
+  }

@@ -230,7 +230,7 @@
         <div class="signatures">
             <div class="signature">
                 <div class="signature-line"></div>
-                <div class="signature-title">FUNDADOR NAKAMALIST</div>
+                <div class="signature-title">Arthur Vinícius | Davi Trefs | Guilherme Siqueira</div>
             </div>
             <div class="signature">
                 <div class="signature-line"></div>

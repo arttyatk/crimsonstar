@@ -25,7 +25,19 @@ class User extends Authenticatable
         'email',
         'password',
         'codigo',
-        'validado'
+        'validado',
+        'username',
+        'phone',
+        'birthdate',
+        'location',
+        'bio',
+        'discord',
+        'twitter',
+        'instagram',
+        'tiktok',
+        'snapchat',
+        'avatarpf',
+        'coverp',
     ];
 
     /**

@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
+use App\Models\UserToken;
+use Carbon\Carbon;
 
 class GeraTokenController extends Controller
 {
@@ -27,17 +29,32 @@ class GeraTokenController extends Controller
             ], 403); 
             }
 
-            $token = $user->createToken('auth_token')->plainTextToken;
+           $user = Auth::user();
+
+            // Gera o token string primeiro
+            $tokenString = md5($request->password . $request->email . Carbon::now());
+            
+            $usertoken = new UserToken();
+            $usertoken->user_id = $user->id;
+            $usertoken->token = $tokenString; // Usa a variável do token
+            $usertoken->valido_ate = Carbon::now()->addDays(7);
+            $usertoken->save();
 
             return response()->json([
-                "acess_token" => $token,
-                "token_type" => 'Bearer'
+                "acess_token" => $tokenString, // ✅ Retorna a STRING do token
+                "token_type" => 'Bearer',
+                "expires_in" => 604800, // 7 dias em segundos
+                "user" => [
+                    "id" => $user->id,
+                    "name" => $user->name,
+                    "email" => $user->email
+                ]
             ]);
         }
 
         return response()->json([
             "message" => "Usuário Inválido"
-        ]);
+        ], 401);
     }
 
      public function validar_email($codigo){
@@ -59,12 +76,14 @@ class GeraTokenController extends Controller
         $request->validate([
             "email" => "required|string|email|unique:users",
             "name" => "required|string",
+            "username" => "required|string|unique:users",
             "password" => "required|string|min:6"
         ]);
 
         $user = User::create([
             "email" => $request->email,
             "name" => $request->name,
+            "username" => $request->username,
             "password" => Hash::make($request->password),
             "validado" => 'N',
             "codigo" => str(rand(1000, 9999))
@@ -76,6 +95,23 @@ class GeraTokenController extends Controller
         return response()->json([
             "message" => "Sucesso",
             "user" => $user
+        ]);
+    }
+
+    // Método adicional para logout (opcional)
+    public function logout(Request $request)
+    {
+        $authorizationHeader = $request->header('Authorization');
+        
+        if ($authorizationHeader && str_starts_with($authorizationHeader, 'Bearer ')) {
+            $token = substr($authorizationHeader, 7);
+            UserToken::where('token', $token)->delete();
+        }
+
+        Auth::logout();
+
+        return response()->json([
+            'message' => 'Logout realizado com sucesso'
         ]);
     }
 }

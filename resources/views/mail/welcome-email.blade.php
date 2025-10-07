@@ -7,7 +7,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            background: linear-gradient(135deg, #690202 20%, #300000 50%);
             font-family: 'Poppins', sans-serif;
         }
         
@@ -22,7 +22,7 @@
             position: absolute;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(255,45,110,0.3) 0%, rgba(255,45,110,0) 70%);
+            background: radial-gradient(circle, rgba(255, 45, 45, 0.3) 0%, rgba(255,45,110,0) 70%);
             z-index: 0;
         }
         
@@ -38,7 +38,7 @@
         
         .card {
             position: relative;
-            background: rgba(20, 20, 20, 0.8);
+            background: rgba(8, 8, 8, 0.8);
             backdrop-filter: blur(10px);
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -48,7 +48,7 @@
         }
         
         .header {
-            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80') center/cover;
+            background: url('https://t3.ftcdn.net/jpg/02/97/45/54/360_F_297455425_lNivJ7rm7LPLuApu3jx36L02PeLllDxN.jpg') center/cover;
             height: 180px;
             position: relative;
             display: flex;
@@ -62,7 +62,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(255,45,110,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            background: linear-gradient(to bottom, rgba(255, 45, 45, 0.3) 0%, rgba(0,0,0,0.7) 100%);
         }
         
         .logo {
@@ -81,7 +81,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             font-size: 32px;
-            background: linear-gradient(to right, #ff2d6e, #ff6b9e);
+            background: linear-gradient(to right, #bf0606, #8d0000);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 0 0 20px 0;
@@ -105,13 +105,13 @@
         .cta-button {
             display: inline-block;
             padding: 16px 40px;
-            background: linear-gradient(45deg, #ff2d6e 0%, #ff6b9e 100%);
+            background: linear-gradient(45deg, #740303 0%, #8d0000 100%);
             color: white !important;
             text-decoration: none;
             font-weight: 600;
             font-size: 18px;
             border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(255,45,110,0.3);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -119,7 +119,7 @@
         
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255,45,110,0.4);
+            box-shadow: 0 15px 30px rgba(160, 0, 0, 0.4);
         }
         
         .cta-button:active {
@@ -182,19 +182,19 @@
         <div class="card">
             <div class="header">
                 <div class="header-overlay"></div>
-                <img src="{{ asset('logonakama.png') }}" class="logo">
+                <img src="{{ asset('CRIMSONLOGOTRANSPARENTE.png') }}" class="logo">
             </div>
             
             <div class="content">
                 <h1>CONFIRME SEU E-MAIL</h1>
                 
-                <p>E aí, Nakama! Estamos tão animados para tê-lo a bordo! Estamos prestes a embarcar em uma jornada incrível, mas antes, precisamos que você confirme seu e-mail para liberar todo o conteúdo exclusivo que preparamos para você.</p>
+                <p>Seja Bem-Vindo caro viajante! Estamos tão animados para tê-lo a bordo! Estamos prestes a embarcar em uma jornada incrível, mas antes, precisamos que você confirme seu e-mail para liberar todo o conteúdo exclusivo que preparamos para você.</p>
                 
                 <div class="button-container">
-                    <a href="http://127.0.0.1:8000/valida_email/{{$user->codigo}}" class="cta-button"> Autenticar email </a>
+                    <a href="http://127.0.0.1:8000/valida_email/{{$user->codigo}}" class="cta-button">Autenticar email</a>
                 </div>
                 
-                <p class="disclaimer">Se você não se cadastrou no Nakama List, pode ignorar este e-mail. Alguém deve ter digitado o e-mail errado. Se foi um engano, não se preocupe - nenhuma ação é necessária de sua parte.</p>
+                <p class="disclaimer">Se você não se cadastrou no Nakama List, pode ignorar este e-mail. Alguém deve ter digitado o e-mail errado. Se foi um engano, não se preocupe - nenhuma ação é necessária de sua parte, ou, entre em contato com SuporteCrimson</p>
             </div>
             
             <div class="footer">

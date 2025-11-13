@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class GachaItem extends Model
 {
     use HasFactory;
 
-    // Nome correto da tabela
     protected $table = 'table_gacha_items';
 
     protected $fillable = [
@@ -24,6 +22,7 @@ class GachaItem extends Model
         'habilidades',
         'status',
         'taxa_drop',
+        'star_coin_reward',
     ];
 
     protected $casts = [
@@ -40,20 +39,21 @@ class GachaItem extends Model
     public function bannersExclusivos()
     {
         return $this->belongsToMany(
-            BannerBox::class, 
-            'banner_exclusive_items', 
-            'item_id', 
+            BannerBox::class,
+            'banner_exclusive_items',
+            'item_id',
             'banner_id'
         )->withPivot('taxa_drop')->withTimestamps();
     }
 
     /**
-     * Acessor para gerar a URL pública da imagem.
+     * Acessor para gerar a URL pública da imagem (versão compatível com pasta dentro de public/).
      */
     public function getImagemUrlAttribute()
     {
-        if ($this->imagem && Storage::disk('public')->exists($this->imagem)) {
-            return asset(Storage::url($this->imagem));
+        if ($this->imagem) {
+            $filename = basename($this->imagem);
+            return asset('storage/gacha_images/' . $filename);
         }
         return null;
     }

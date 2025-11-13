@@ -52,6 +52,13 @@ Route::controller(BannerBoxController::class)->group(function () {
     Route::delete('/banners-boxes/{id}', 'destroy');
 });
 
+// Rota para listar todos os itens (usada para popular o Select)
+Route::get('gacha-items', [GachaItemController::class, 'index']); 
+
+// Rota para atualizar a recompensa de Star Coins de um item específico
+// Usaremos um PUT para atualizar um recurso existente
+Route::put('gacha-items/{id}/set-coins', [GachaItemController::class, 'setStarCoins']);
+
 
 // Rotas protegidas (requer token de login com Sanctum)
 Route::middleware(['auth:sanctum', Cors::class])->group(function () {

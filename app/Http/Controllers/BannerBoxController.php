@@ -26,7 +26,7 @@ class BannerBoxController extends Controller
             'descricao' => 'nullable|string',
             'preco' => 'required|numeric|min:0',
             'tipo' => 'required|in:banner,box',
-            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'itens_ids' => 'nullable|string',
             'status' => 'required|in:ativo,inativo',
         ]);
@@ -62,9 +62,7 @@ class BannerBoxController extends Controller
 
     public function show($id)
     {
-        $banner = BannerBox::with(['exclusivos' => function($query) {
-            $query->select('table_gacha_items.id', 'nome', 'raridade', 'tipo');
-        }])->findOrFail($id);
+        $banner = BannerBox::with(['exclusivos'])->findOrFail($id);
 
         return response()->json([
             'banner' => $banner,
@@ -90,7 +88,7 @@ class BannerBoxController extends Controller
             'preco' => 'required|numeric|min:0', // <--- Verifique este campo!
             'tipo' => 'required|in:banner,box',
             // A regra 'imagem' só se aplica se o arquivo foi enviado
-            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240', 
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120', 
             'itens_ids' => 'nullable|string',
             'status' => 'required|in:ativo,inativo',
         ]);
